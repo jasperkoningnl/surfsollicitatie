@@ -48,12 +48,21 @@ const MUTED = "#4a4a4a";
 
 const styles = StyleSheet.create({
   page: {
-    paddingTop: 56,
-    paddingBottom: 56,
-    paddingHorizontal: 64,
+    paddingTop: 44,
+    paddingBottom: 40,
+    paddingHorizontal: 58,
     fontFamily: "SourceSans",
-    fontSize: 10.5,
-    lineHeight: 1.55,
+    fontSize: 10,
+    lineHeight: 1.45,
+    color: TEXT,
+  },
+  cvPage: {
+    paddingTop: 32,
+    paddingBottom: 28,
+    paddingHorizontal: 44,
+    fontFamily: "SourceSans",
+    fontSize: 9.2,
+    lineHeight: 1.3,
     color: TEXT,
   },
   accentBar: {
@@ -67,7 +76,7 @@ const styles = StyleSheet.create({
   headerRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 28,
+    marginBottom: 18,
   },
   jkMark: {
     width: 36,
@@ -98,94 +107,103 @@ const styles = StyleSheet.create({
   meta: {
     fontSize: 9,
     color: MUTED,
-    marginBottom: 18,
+    marginBottom: 10,
   },
   subject: {
     fontFamily: "Nunito",
     fontWeight: 800,
-    fontSize: 18,
+    fontSize: 15,
     color: TEXT,
-    marginBottom: 18,
+    marginBottom: 12,
   },
   paragraph: {
-    marginBottom: 11,
+    marginBottom: 7,
     textAlign: "justify",
   },
   sign: {
-    marginTop: 14,
+    marginTop: 9,
   },
   ps: {
-    marginTop: 14,
-    fontSize: 9.5,
+    marginTop: 10,
+    fontSize: 8.5,
     color: MUTED,
     fontStyle: "italic",
+    lineHeight: 1.4,
   },
   // CV
   cvHeader: {
-    marginBottom: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  cvHeaderText: {
+    marginLeft: 12,
+    flex: 1,
   },
   cvName: {
     fontFamily: "Nunito",
     fontWeight: 800,
-    fontSize: 26,
+    fontSize: 20,
     color: TEXT,
-    letterSpacing: 0.2,
+    letterSpacing: 0.4,
+    lineHeight: 1.1,
   },
   cvContact: {
-    fontSize: 10,
+    fontSize: 8.5,
     color: MUTED,
-    marginTop: 4,
+    marginTop: 2,
   },
   sectionTitle: {
     fontFamily: "Nunito",
     fontWeight: 800,
-    fontSize: 11,
+    fontSize: 9.5,
     color: ORANGE,
     textTransform: "uppercase",
     letterSpacing: 1.2,
-    marginTop: 16,
-    marginBottom: 8,
-    borderBottomWidth: 1,
-    borderBottomColor: "#e5e5e5",
-    paddingBottom: 4,
+    marginTop: 8,
+    marginBottom: 3,
   },
   profile: {
-    fontSize: 10.5,
+    fontSize: 9.2,
     color: TEXT,
-    marginBottom: 4,
+    lineHeight: 1.35,
   },
   jobRow: {
-    marginBottom: 10,
+    marginBottom: 4,
+  },
+  jobHeading: {
+    fontSize: 10,
+    lineHeight: 1.2,
+    marginBottom: 0,
   },
   jobTitle: {
     fontFamily: "Nunito",
     fontWeight: 700,
-    fontSize: 11.5,
     color: TEXT,
   },
   jobCompany: {
-    fontSize: 10.5,
     color: ORANGE,
     fontFamily: "SourceSans",
     fontWeight: 600,
   },
   jobMeta: {
-    fontSize: 9,
+    fontSize: 8,
     color: MUTED,
-    marginBottom: 3,
+    marginBottom: 1,
   },
   bullet: {
     flexDirection: "row",
-    marginBottom: 1.5,
+    marginBottom: 0,
   },
   bulletDot: {
-    width: 10,
-    fontSize: 10,
+    width: 8,
+    fontSize: 9,
     color: ORANGE,
   },
   bulletText: {
     flex: 1,
-    fontSize: 10,
+    fontSize: 9,
+    lineHeight: 1.3,
     color: TEXT,
   },
   skillRow: {
@@ -193,14 +211,14 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
   skillPill: {
-    fontSize: 9.5,
+    fontSize: 8.5,
     color: TEXT,
     backgroundColor: "#f1f1ee",
-    borderRadius: 10,
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    marginRight: 5,
-    marginBottom: 5,
+    borderRadius: 8,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    marginRight: 3,
+    marginBottom: 3,
   },
 });
 
@@ -269,8 +287,12 @@ function Job({ title, company, period, location, bullets }) {
   return React.createElement(
     View,
     { style: styles.jobRow, wrap: false },
-    React.createElement(Text, { style: styles.jobTitle }, title),
-    React.createElement(Text, { style: styles.jobCompany }, company),
+    React.createElement(
+      Text,
+      { style: styles.jobHeading },
+      React.createElement(Text, { style: styles.jobTitle }, title),
+      React.createElement(Text, { style: styles.jobCompany }, `  ·  ${company}`)
+    ),
     React.createElement(Text, { style: styles.jobMeta }, `${period}${location ? " · " + location : ""}`),
     ...bullets.map((b, i) =>
       React.createElement(
@@ -381,24 +403,20 @@ function CVDoc() {
     null,
     React.createElement(
       Page,
-      { size: "A4", style: styles.page },
+      { size: "A4", style: styles.cvPage },
       React.createElement(View, { style: styles.accentBar, fixed: true }),
       React.createElement(
         View,
         { style: styles.cvHeader },
+        JKBlock(),
         React.createElement(
           View,
-          { style: { flexDirection: "row", alignItems: "center" } },
-          JKBlock(),
+          { style: styles.cvHeaderText },
+          React.createElement(Text, { style: styles.cvName }, "JASPER KONING"),
           React.createElement(
-            View,
-            null,
-            React.createElement(Text, { style: styles.cvName }, "JASPER KONING"),
-            React.createElement(
-              Text,
-              { style: styles.cvContact },
-              "Amersfoort  ·  06-52633802  ·  kingjay@gmail.com  ·  linkedin.com/in/jasperkoning"
-            )
+            Text,
+            { style: styles.cvContact },
+            "Amersfoort  ·  06-52633802  ·  kingjay@gmail.com  ·  linkedin.com/in/jasperkoning"
           )
         )
       ),
@@ -411,9 +429,17 @@ function CVDoc() {
       React.createElement(Text, { style: styles.sectionTitle }, "Werkervaring"),
       ...jobs.map((j, i) => React.createElement(Job, { key: i, ...j })),
       React.createElement(Text, { style: styles.sectionTitle }, "Opleiding"),
-      React.createElement(Text, { style: { fontFamily: "Nunito", fontWeight: 700, fontSize: 11.5 } }, "HBO Journalistiek"),
-      React.createElement(Text, { style: { fontSize: 10, color: ORANGE, fontFamily: "SourceSans", fontWeight: 600 } }, "Windesheim, Zwolle"),
-      React.createElement(Text, { style: { fontSize: 9, color: MUTED } }, "1995 – 2001"),
+      React.createElement(
+        View,
+        { wrap: false },
+        React.createElement(
+          Text,
+          { style: styles.jobHeading },
+          React.createElement(Text, { style: styles.jobTitle }, "HBO Journalistiek"),
+          React.createElement(Text, { style: styles.jobCompany }, "  ·  Windesheim, Zwolle")
+        ),
+        React.createElement(Text, { style: styles.jobMeta }, "1995 – 2001")
+      ),
       React.createElement(Text, { style: styles.sectionTitle }, "Vaardigheden"),
       React.createElement(
         View,
