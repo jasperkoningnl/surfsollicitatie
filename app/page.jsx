@@ -137,7 +137,7 @@ function Hero() {
               De verbindende factor tussen techniek, content en gebruiker
             </h1>
             <div className="mt-7 space-y-4 text-lg text-black/80 leading-relaxed max-w-xl">
-              <p>
+              <p className="font-bold text-black">
                 Welkom. Ik ben Jasper Koning, eindredacteur bij Brainwash
                 (omroep HUMAN) en daarvoor o.a. werkzaam bij VPRO, PC Magazine
                 en NCRV. Mijn hele carrière beweeg ik me op het snijvlak van
@@ -240,7 +240,7 @@ function SectionCard({ section }) {
             {section.highlights.map((h) => (
               <span
                 key={h}
-                className="inline-block rounded-full text-[12px] font-bold px-3.5 py-1.5 whitespace-nowrap"
+                className="inline-block rounded-full text-[14px] font-bold px-4 py-1.5 whitespace-nowrap"
                 style={{
                   background: rgba(section.color, 0.1),
                   color: section.color,
@@ -269,12 +269,45 @@ function Footer() {
       />
       <div className="relative max-w-6xl mx-auto px-5 md:px-8 pt-20 md:pt-28 pb-14 md:pb-16">
         <div className="flex items-start justify-between gap-8">
-          <div>
-            <div className="font-heading font-extrabold text-3xl md:text-4xl text-white leading-tight">
-              Jasper Koning
+          <div className="flex flex-col md:flex-row md:items-start md:gap-16 lg:gap-24 flex-1">
+            <div>
+              <div className="font-heading font-extrabold text-3xl md:text-4xl text-white leading-tight">
+                Jasper Koning
+              </div>
+              <div className="mt-2 text-white/70 text-sm md:text-base">
+                Sollicitatie Productowner Communicatiekanalen
+              </div>
             </div>
-            <div className="mt-2 text-white/70 text-sm md:text-base">
-              Sollicitatie Productowner Communicatiekanalen
+            <div className="mt-10 md:mt-2 space-y-4 text-[15px] md:text-base">
+              <a
+                href="mailto:kingjay@gmail.com"
+                className="flex items-center gap-3 text-white/90 hover:text-white transition"
+              >
+                <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 border border-white/15">
+                  <MailIcon className="w-4 h-4" />
+                </span>
+                kingjay@gmail.com
+              </a>
+              <a
+                href="tel:+31652633802"
+                className="flex items-center gap-3 text-white/90 hover:text-white transition"
+              >
+                <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 border border-white/15">
+                  <PhoneIcon className="w-4 h-4" />
+                </span>
+                06 - 52 63 38 02
+              </a>
+              <a
+                href="https://linkedin.com/in/jasperkoning"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-3 text-white/90 hover:text-white transition"
+              >
+                <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 border border-white/15">
+                  <LinkedInIcon className="w-4 h-4" />
+                </span>
+                linkedin.com/in/jasperkoning
+              </a>
             </div>
           </div>
           <a
@@ -283,38 +316,6 @@ function Footer() {
             className="shrink-0 inline-flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white transition"
           >
             <ArrowUpIcon className="w-5 h-5" />
-          </a>
-        </div>
-
-        <div className="mt-12 md:mt-16 space-y-4 text-[15px] md:text-base">
-          <a
-            href="mailto:kingjay@gmail.com"
-            className="flex items-center gap-3 text-white/90 hover:text-white transition"
-          >
-            <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 border border-white/15">
-              <MailIcon className="w-4 h-4" />
-            </span>
-            kingjay@gmail.com
-          </a>
-          <a
-            href="tel:+31652633802"
-            className="flex items-center gap-3 text-white/90 hover:text-white transition"
-          >
-            <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 border border-white/15">
-              <PhoneIcon className="w-4 h-4" />
-            </span>
-            06 - 52 63 38 02
-          </a>
-          <a
-            href="https://linkedin.com/in/jasperkoning"
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center gap-3 text-white/90 hover:text-white transition"
-          >
-            <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 border border-white/15">
-              <LinkedInIcon className="w-4 h-4" />
-            </span>
-            linkedin.com/in/jasperkoning
           </a>
         </div>
 
