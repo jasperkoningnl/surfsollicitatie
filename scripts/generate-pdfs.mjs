@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import React from "react";
-import { Document, Page, Text, View, StyleSheet, Font, renderToFile } from "@react-pdf/renderer";
+import { Document, Page, Text, View, Link, StyleSheet, Font, renderToFile } from "@react-pdf/renderer";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -215,11 +215,10 @@ function JKBlock() {
 function LetterDoc() {
   const paragraphs = [
     "Het is een cliché om een brief te openen met hoe goed een vacature bij je past. Maar bij de vacature voor Productowner Communicatiekanalen bij SURF kan ik niet anders. Bijdragen aan een online visie en strategie, de spin in het web zijn tussen interne en externe partijen, en de planning en het budget bewaken voor de online kanalen van een organisatie die er echt toe doet. Ik ben enthousiast.",
-    "In mijn werk zat ik altijd op het snijvlak van techniek, content en coördinatie. Als projectleider bij VPRO Digitaal stuurde ik platforms aan als VPRO.nl en HollandDoc.nl: interne wensen ophalen, die vertalen naar een plan van aanpak en het traject met externe ontwikkelpartijen begeleiden. Bij Nederland van Boven coördineerde ik een crossmediaal project met buitenlandse databedrijven, belangenorganisaties en interne afdelingen. En als eindredacteur bij Brainwash en NOS op 3 ben ik verantwoordelijk voor budget, planning en het bewaken van de lijn op meerdere kanalen tegelijk.",
-    "Wat me drijft is niet zozeer de inhoudelijke eindverantwoordelijkheid, maar het regisseren van het proces eromheen. Inventariseren wie de relevante stakeholders zijn, gezamenlijke wensen ophalen, onduidelijkheden uitwerken en dat met gebruikersonderzoek en een haalbaarheidsoverzicht vertalen naar een concreet en uitvoerbaar plan. Die rol van spil, waarbij je continu schakelt tussen techniek, design en de mensen die ermee moeten werken, is waar ik het beste tot mijn recht kom.",
+    "In mijn werk zat ik altijd op het snijvlak van techniek, content en coördinatie. Als projectleider bij VPRO Digitaal stuurde ik platforms aan als VPRO.nl en HollandDoc.nl: interne wensen ophalen, die vertalen naar een plan van aanpak en het traject met externe ontwikkelpartijen begeleiden. Bij Nederland van Boven coördineerde ik een crossmediaal project met buitenlandse databedrijven, belangenorganisaties en interne afdelingen.",
+    "Gaandeweg ben ik erachter gekomen dat het projectmatige me minstens zo goed ligt als de inhoudelijke eindverantwoordelijkheid. Processen stroomlijnen, de regie voeren over een traject. Inventariseren wie de relevante stakeholders zijn, gezamenlijke wensen ophalen, onduidelijkheden uitwerken en dat met gebruikersonderzoek en een haalbaarheidsoverzicht vertalen naar een concreet en uitvoerbaar plan. Die rol van spil, waarbij je continu schakelt tussen techniek, design en de mensen die ermee moeten werken, is waar ik het beste tot mijn recht kom.",
     "De technische kant is me vertrouwd. In mijn carrière werkte ik met WordPress, Magnolia, Prepr en vele andere CMS'en. Bij de VPRO maakte ik de invoering van agile werken mee, werkte ik met JIRA, schreef ik user stories en begeleidde ik gebruikerstests bij het opzetten van de app Koos voor VPRO Gids. Die technische affiniteit heb ik al vroeg opgebouwd: als ICT-journalist bij PC Magazine en ZDNet.nl leerde ik technische onderwerpen vertalen naar een breed publiek, een vaardigheid die ik dagelijks gebruik.",
     "Mijn ervaring ligt grotendeels in de Hilversumse mediawereld, maar ik wil graag een nieuwe stap maken. Een coöperatie die technologie voor het hoger onderwijs verzorgt, en dat doet vanuit samenwerking en kennisdeling, spreekt me aan. De manier waarop SURF met haar leden werkt, de autonomie die medewerkers krijgen en de missie om onderwijs en onderzoek digitaal sterker te maken: daar wil ik graag aan bijdragen.",
-    "Om mijn sollicitatie wat kracht bij te zetten, heb ik naast deze brief ook een interactieve sollicitatie gemaakt. Met wat hulp van AI. De link staat in mijn begeleidende e-mail.",
   ];
 
   return React.createElement(
@@ -244,6 +243,16 @@ function LetterDoc() {
       React.createElement(Text, { style: styles.subject }, "Sollicitatie Productowner Communicatiekanalen"),
       React.createElement(Text, { style: styles.paragraph }, "Beste Edwin,"),
       ...paragraphs.map((p, i) => React.createElement(Text, { key: i, style: styles.paragraph }, p)),
+      React.createElement(
+        Text,
+        { style: styles.paragraph },
+        "Om mijn sollicitatie wat kracht bij te zetten, heb ik naast deze brief ook een interactieve sollicitatie gemaakt, met wat hulp van AI: ",
+        React.createElement(
+          Link,
+          { src: "https://surfsollicitatie.vercel.app", style: { color: ORANGE, textDecoration: "none" } },
+          "surfsollicitatie.vercel.app"
+        )
+      ),
       React.createElement(Text, { style: styles.sign }, "Met vriendelijke groet,"),
       React.createElement(Text, { style: { marginTop: 10, fontFamily: "Nunito", fontWeight: 700, fontSize: 12 } }, "Jasper Koning"),
       React.createElement(Text, { style: { fontSize: 9.5, color: MUTED } }, "tel: 06-52633802"),
