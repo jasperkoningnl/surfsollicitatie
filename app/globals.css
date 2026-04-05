@@ -17,3 +17,33 @@ h1, h2, h3, h4 {
   font-weight: 800;
   letter-spacing: -0.01em;
 }
+
+@keyframes surf-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(-0.6deg); }
+}
+
+@keyframes surf-float-alt {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-7px) rotate(0.8deg); }
+}
+
+.animate-float {
+  animation: surf-float 8s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.animate-float-alt {
+  animation: surf-float-alt 10s ease-in-out infinite;
+  animation-delay: -2.5s;
+  transform-origin: center;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-alt {
+    animation: none;
+  }
+}

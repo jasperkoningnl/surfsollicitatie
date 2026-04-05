@@ -43,6 +43,7 @@ const sections = [
     blobPos: "top-left",
     image: "/1516235169483.jfif",
     imageAlt: "Jasper Koning",
+    imageFlip: true,
   },
   {
     id: "projecten",
@@ -147,7 +148,7 @@ function Hero() {
             <ShapedImage
               src="/IMG-20161101-WA0003.jpg"
               alt="Jasper Koning aan het werk"
-              className="w-full h-auto drop-shadow-xl"
+              className="w-full h-auto drop-shadow-xl animate-float"
             />
           </div>
         </div>
@@ -220,7 +221,8 @@ function SectionCard({ section, index }) {
                 <ShapedImage
                   src={section.image}
                   alt={section.imageAlt || ""}
-                  className="w-full h-auto"
+                  flip={section.imageFlip}
+                  className="w-full h-auto drop-shadow-lg animate-float-alt"
                 />
               </div>
             )}

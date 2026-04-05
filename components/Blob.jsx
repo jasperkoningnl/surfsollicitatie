@@ -26,9 +26,18 @@ export default function Blob({ color = "#E67300", className = "", style = {} }) 
 
 // Image clipped to the SURF blob shape (like surf.nl uses for photos).
 let _idCounter = 0;
-export function ShapedImage({ src, alt = "", className = "", style = {} }) {
+export function ShapedImage({
+  src,
+  alt = "",
+  className = "",
+  style = {},
+  flip = false,
+}) {
   // Unique per render so multiple instances don't collide on clipPath id.
   const id = `surf-clip-${++_idCounter}`;
+  // Horizontal flip via transform on the shape itself: moves the little
+  // "tail" to the opposite side for visual variation.
+  const pathTransform = flip ? "matrix(-1 0 0 1 206 0)" : undefined;
   return (
     <svg
       viewBox={SURF_VIEWBOX}
@@ -41,7 +50,7 @@ export function ShapedImage({ src, alt = "", className = "", style = {} }) {
     >
       <defs>
         <clipPath id={id}>
-          <path d={SURF_PATH} />
+          <path d={SURF_PATH} transform={pathTransform} />
         </clipPath>
       </defs>
       <image
