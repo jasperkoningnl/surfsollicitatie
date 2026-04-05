@@ -1,4 +1,4 @@
-import Blob from "../components/Blob";
+import Blob, { ShapedImage, SurfMark } from "../components/Blob";
 
 const sections = [
   {
@@ -41,6 +41,8 @@ const sections = [
     ],
     highlights: ["Stand.nl & Rondom Tien", "Landroof & Café de Liefde", "Tegenlicht Meet Ups", "Brainwash socials"],
     blobPos: "top-left",
+    image: "/1516235169483.jfif",
+    imageAlt: "Jasper Koning",
   },
   {
     id: "projecten",
@@ -72,32 +74,12 @@ const sections = [
   },
 ];
 
-function JKMark({ size = 44 }) {
-  return (
-    <div
-      className="relative flex items-center justify-center shrink-0"
-      style={{ width: size, height: size }}
-      aria-hidden
-    >
-      <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full">
-        <path
-          fill="#E67300"
-          d="M50 2c22 0 42 14 46 34 4 22-10 40-28 50-18 10-42 12-54-2C2 70-2 48 8 30 18 12 32 2 50 2z"
-        />
-      </svg>
-      <span className="relative font-heading font-extrabold text-white text-sm tracking-tight">
-        JK
-      </span>
-    </div>
-  );
-}
-
 function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-black/5">
       <div className="max-w-6xl mx-auto px-5 md:px-8 h-16 md:h-20 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3 min-w-0">
-          <JKMark size={40} />
+          <SurfMark height={36} />
           <div className="min-w-0">
             <div className="font-heading font-extrabold text-[15px] md:text-base leading-tight truncate">
               Jasper Koning
@@ -139,26 +121,37 @@ function Hero() {
         color="#0077C0"
         className="absolute top-40 -left-48 w-[420px] h-[420px] opacity-[0.05]"
       />
-      <div className="relative max-w-6xl mx-auto px-5 md:px-8 pt-16 md:pt-24 pb-10 md:pb-16">
-        <div className="text-[11px] md:text-xs font-heading font-extrabold uppercase tracking-[0.14em] text-surf-orange mb-5">
-          Interactieve sollicitatie · SURF
+      <div className="relative max-w-6xl mx-auto px-5 md:px-8 pt-16 md:pt-20 pb-10 md:pb-16">
+        <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
+          <div className="md:col-span-7">
+            <div className="text-[11px] md:text-xs font-heading font-extrabold uppercase tracking-[0.14em] text-surf-orange mb-5">
+              Interactieve sollicitatie · SURF
+            </div>
+            <h1 className="font-heading font-extrabold text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
+              De verbindende factor tussen techniek, content en gebruiker
+            </h1>
+            <div className="mt-7 space-y-4 text-lg text-black/75 leading-relaxed">
+              <p>
+                Welkom. Ik ben Jasper Koning, eindredacteur bij Brainwash
+                (omroep HUMAN) en daarvoor o.a. werkzaam bij VPRO, PC Magazine
+                en NCRV. Mijn hele carrière beweeg ik me op het snijvlak van
+                techniek, content en coördinatie.
+              </p>
+              <p>
+                Op deze pagina laat ik zien hoe mijn achtergrond aansluit op de
+                rol van Product Owner Communicatiekanalen bij SURF.
+              </p>
+            </div>
+          </div>
+          <div className="md:col-span-5">
+            <ShapedImage
+              src="/IMG-20161101-WA0003.jpg"
+              alt="Jasper Koning aan het werk"
+              className="w-full h-auto drop-shadow-xl"
+            />
+          </div>
         </div>
-        <h1 className="font-heading font-extrabold text-4xl md:text-6xl leading-[1.05] tracking-tight max-w-4xl">
-          De verbindende factor tussen techniek, content en gebruiker
-        </h1>
-        <div className="mt-8 max-w-2xl space-y-4 text-lg md:text-xl text-black/75 leading-relaxed">
-          <p>
-            Welkom. Ik ben Jasper Koning, eindredacteur bij Brainwash (omroep
-            HUMAN) en daarvoor o.a. werkzaam bij VPRO, PC Magazine en NCRV.
-            Mijn hele carrière beweeg ik me op het snijvlak van techniek,
-            content en coördinatie.
-          </p>
-          <p>
-            Op deze pagina laat ik zien hoe mijn achtergrond aansluit op de rol
-            van Product Owner Communicatiekanalen bij SURF.
-          </p>
-        </div>
-        <nav className="mt-10 flex flex-wrap gap-2 md:gap-2.5">
+        <nav className="mt-12 flex flex-wrap gap-2 md:gap-2.5">
           {sections.map((s) => (
             <a
               key={s.id}
@@ -195,29 +188,42 @@ function SectionCard({ section, index }) {
           className={`absolute ${blobPositions[section.blobPos]} w-[360px] h-[360px] opacity-[0.05] pointer-events-none`}
         />
         <div className="relative p-7 md:p-12">
-          <div
-            className="inline-block rounded-full px-3.5 py-1.5 text-[11px] font-heading font-extrabold uppercase tracking-[0.1em] text-white"
-            style={{ background: section.color }}
-          >
-            {section.tag}
-          </div>
-          <h2 className="mt-5 font-heading font-extrabold text-3xl md:text-4xl leading-tight max-w-3xl">
-            {section.heading}
-          </h2>
-          <div className="mt-5 space-y-4 text-[17px] md:text-lg leading-relaxed text-black/75 max-w-3xl">
-            {section.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
-          </div>
-          <div className="mt-7 flex flex-wrap gap-2">
-            {section.highlights.map((h) => (
-              <span
-                key={h}
-                className="inline-block rounded-full bg-black/[0.04] text-black/70 text-[12px] font-semibold px-3 py-1.5 whitespace-nowrap"
+          <div className={section.image ? "grid md:grid-cols-12 gap-8 md:gap-10 items-start" : ""}>
+            <div className={section.image ? "md:col-span-8" : ""}>
+              <div
+                className="inline-block rounded-full px-3.5 py-1.5 text-[11px] font-heading font-extrabold uppercase tracking-[0.1em] text-white"
+                style={{ background: section.color }}
               >
-                {h}
-              </span>
-            ))}
+                {section.tag}
+              </div>
+              <h2 className="mt-5 font-heading font-extrabold text-3xl md:text-4xl leading-tight max-w-3xl">
+                {section.heading}
+              </h2>
+              <div className="mt-5 space-y-4 text-[17px] md:text-lg leading-relaxed text-black/75 max-w-3xl">
+                {section.paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+              <div className="mt-7 flex flex-wrap gap-2">
+                {section.highlights.map((h) => (
+                  <span
+                    key={h}
+                    className="inline-block rounded-full bg-black/[0.04] text-black/70 text-[12px] font-semibold px-3 py-1.5 whitespace-nowrap"
+                  >
+                    {h}
+                  </span>
+                ))}
+              </div>
+            </div>
+            {section.image && (
+              <div className="md:col-span-4 md:pt-2">
+                <ShapedImage
+                  src={section.image}
+                  alt={section.imageAlt || ""}
+                  className="w-full h-auto"
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -234,7 +240,7 @@ function Footer() {
       />
       <div className="relative max-w-6xl mx-auto px-5 md:px-8 py-14 md:py-20">
         <div className="flex items-center gap-3 mb-8">
-          <JKMark size={40} />
+          <SurfMark height={36} />
           <div className="font-heading font-extrabold text-lg">Jasper Koning</div>
         </div>
         <div className="grid md:grid-cols-3 gap-6 md:gap-10 text-sm">
